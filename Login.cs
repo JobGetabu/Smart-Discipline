@@ -16,24 +16,14 @@ namespace SmartDiscipline
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelLayer1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            e.Graphics.DrawLine(Pens.Yellow, 0, 0, 100, 100);
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
