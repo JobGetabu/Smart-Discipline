@@ -203,7 +203,7 @@
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(119)))), ((int)(((byte)(98)))));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageActive = ((System.Drawing.Image)(resources.GetObject("btnExit.ImageActive")));
-            this.btnExit.Location = new System.Drawing.Point(991, 5);
+            this.btnExit.Location = new System.Drawing.Point(1004, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(25, 25);
             this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
