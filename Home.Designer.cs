@@ -61,8 +61,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panelGauge = new System.Windows.Forms.Panel();
             this.angularGauge1 = new LiveCharts.WinForms.AngularGauge();
-            this.ovalPictureBox1 = new SmartDiscipline.OvalPictureBox();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.ovalPictureBox1 = new SmartDiscipline.OvalPictureBox();
             this.groupBox1.SuspendLayout();
             this.panelSwitch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -287,9 +287,9 @@
             this.bunifuImageButton2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton2.Image")));
             this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(202, 97);
+            this.bunifuImageButton2.Location = new System.Drawing.Point(202, 78);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
-            this.bunifuImageButton2.Size = new System.Drawing.Size(40, 28);
+            this.bunifuImageButton2.Size = new System.Drawing.Size(40, 20);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton2.TabIndex = 57;
             this.bunifuImageButton2.TabStop = false;
@@ -301,7 +301,7 @@
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblName.Location = new System.Drawing.Point(252, 72);
+            this.lblName.Location = new System.Drawing.Point(254, 72);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(170, 30);
             this.lblName.TabIndex = 56;
@@ -434,7 +434,6 @@
             this.tbLegalInfo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLegalInfo.Location = new System.Drawing.Point(41, 187);
             this.tbLegalInfo.Name = "tbLegalInfo";
-            this.tbLegalInfo.ReadOnly = true;
             this.tbLegalInfo.Size = new System.Drawing.Size(438, 61);
             this.tbLegalInfo.TabIndex = 13;
             this.tbLegalInfo.Text = "";
@@ -484,6 +483,13 @@
             this.angularGauge1.TabIndex = 0;
             this.angularGauge1.Text = "angularGauge1";
             // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.panelSwitch;
+            this.bunifuDragControl1.Vertical = true;
+            // 
             // ovalPictureBox1
             // 
             this.ovalPictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -494,13 +500,6 @@
             this.ovalPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ovalPictureBox1.TabIndex = 66;
             this.ovalPictureBox1.TabStop = false;
-            // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.panelSwitch;
-            this.bunifuDragControl1.Vertical = true;
             // 
             // Home
             // 
