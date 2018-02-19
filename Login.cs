@@ -25,5 +25,17 @@ namespace SmartDiscipline
         {
 
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            //authenticate login 
+            //init then  Home 
+
+            Home hh = new Home();
+
+            hh.Show();
+
+            this.Visible = false;
+        }
     }
 }
