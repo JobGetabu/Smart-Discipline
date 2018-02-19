@@ -12,11 +12,19 @@ namespace SmartDiscipline
     using System;
     using System.Collections.Generic;
     
-    public partial class Login
+    public partial class Student
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> Remember { get; set; }
+        public Student()
+        {
+            this.Disciplinaries = new HashSet<Disciplinary>();
+        }
+    
+        public string Regno { get; set; }
+        public string FullName { get; set; }
+        public string School { get; set; }
+        public string SchoolCode { get; set; }
+        public string LearningMode { get; set; }
+    
+        public virtual ICollection<Disciplinary> Disciplinaries { get; set; }
     }
 }

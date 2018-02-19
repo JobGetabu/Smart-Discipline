@@ -12,11 +12,14 @@ namespace SmartDiscipline
     using System;
     using System.Collections.Generic;
     
-    public partial class Login
+    public partial class Disciplinary
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> Remember { get; set; }
+        public string Regno { get; set; }
+        public decimal level { get; set; }
+        public string Action { get; set; }
+        public string Details { get; set; }
+    
+        public virtual Student Student { get; set; }
     }
 }
