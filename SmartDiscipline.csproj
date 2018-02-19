@@ -101,6 +101,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DisciplineModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogin1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin1.Designer.cs">
+      <DependentUpon>FrmLogin1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     <Compile Include="Student.cs">
       <DependentUpon>DisciplineModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmLogin1.resx">
+      <DependentUpon>FrmLogin1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>

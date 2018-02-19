@@ -19,6 +19,11 @@ namespace SmartDiscipline
 
         private void Home_Load(object sender, EventArgs e)
         {
+            //throw new NotImplementedException();
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
             SetToolTip(tbLegalInfo, $"Info: \n Keywords like Good, bad, improving, indisciplined, positive, questionable \n are being tracked to determine overall discipline");
         }
 
@@ -32,7 +37,7 @@ namespace SmartDiscipline
             ToolTip toolTip1 = new ToolTip();
             toolTip1.UseFading = true;
             toolTip1.UseAnimation = true;
-            toolTip1.IsBalloon = true;
+            //toolTip1.IsBalloon = true;
             toolTip1.AutoPopDelay = 5000;
             toolTip1.InitialDelay = 1000;
             toolTip1.ReshowDelay = 500;

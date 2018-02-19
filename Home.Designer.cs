@@ -1,4 +1,6 @@
-﻿namespace SmartDiscipline
+﻿using System;
+
+namespace SmartDiscipline
 {
     partial class Home
     {
@@ -533,7 +535,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
