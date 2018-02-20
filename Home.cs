@@ -143,8 +143,6 @@ namespace SmartDiscipline
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
-
-
             //do search set currentStudent
             if (tbSearch.Text != string.Empty)
             {
@@ -154,6 +152,7 @@ namespace SmartDiscipline
                 {
                     //populate the UI
                     UIset(currentStudent);
+                    alert.Show($"{currentStudent.FullName} found ", alert.AlertType.success);
                 }
             }
         }
@@ -187,6 +186,7 @@ namespace SmartDiscipline
                 {
                     context.Disciplinaries.Add(dd);
                     context.SaveChanges();
+                    alert.Show("Saved Successfully", alert.AlertType.success);
                 }
                 catch (Exception)
                 {
@@ -251,6 +251,11 @@ namespace SmartDiscipline
                 default:
                     break;
             }
+        }
+
+        private void tab2_Click(object sender, EventArgs e)
+        {
+            //prompt add student
         }
     }
 }

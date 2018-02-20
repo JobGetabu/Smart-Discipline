@@ -1,4 +1,5 @@
-﻿using System;
+﻿using custom_alert_notifications;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +27,22 @@ namespace SmartDiscipline
         {
             //Authenticate user
             //perform login
-
+            //verification
+            if (String.IsNullOrEmpty(tbFullName.Text))
+            {
+                alert.Show("Required info \n Input Username", alert.AlertType.warnig);
+                return;
+            }
+            if (String.IsNullOrEmpty(tbPassword.Text))
+            {
+                alert.Show("Required info \n Input Password", alert.AlertType.warnig);
+                return;
+            }
+            if (! tbFullName.Text.Equals(tbPassword.Text))
+            {
+                alert.Show("Wrong \n Password or Username ", alert.AlertType.error);
+                return;
+            }
             try
             {
                 using (BunifuAnimatorNS.BunifuTransition ss = new BunifuAnimatorNS.BunifuTransition())

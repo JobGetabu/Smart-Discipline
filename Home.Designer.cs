@@ -36,7 +36,6 @@ namespace SmartDiscipline
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelPie = new System.Windows.Forms.Panel();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
-            this.ovalPictureBox1 = new SmartDiscipline.OvalPictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblMOL = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -67,9 +66,10 @@ namespace SmartDiscipline
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.tbFullName = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.ovalPictureBox1 = new SmartDiscipline.OvalPictureBox();
+            this.tab2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.groupBox1.SuspendLayout();
             this.panelPie.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -78,6 +78,7 @@ namespace SmartDiscipline
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panelGauge.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -126,17 +127,6 @@ namespace SmartDiscipline
             this.pieChart1.Size = new System.Drawing.Size(485, 273);
             this.pieChart1.TabIndex = 1;
             this.pieChart1.Text = "pieChart1";
-            // 
-            // ovalPictureBox1
-            // 
-            this.ovalPictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ovalPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("ovalPictureBox1.Image")));
-            this.ovalPictureBox1.Location = new System.Drawing.Point(15, 30);
-            this.ovalPictureBox1.Name = "ovalPictureBox1";
-            this.ovalPictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.ovalPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ovalPictureBox1.TabIndex = 66;
-            this.ovalPictureBox1.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -315,6 +305,7 @@ namespace SmartDiscipline
             // panelSwitch
             // 
             this.panelSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(119)))), ((int)(((byte)(98)))));
+            this.panelSwitch.Controls.Add(this.tab2);
             this.panelSwitch.Controls.Add(this.btnExit);
             this.panelSwitch.Controls.Add(this.tab1);
             this.panelSwitch.Controls.Add(this.bunifuSeparator1);
@@ -543,6 +534,29 @@ namespace SmartDiscipline
             this.btnRegister.Text = "Search";
             this.btnRegister.UseVisualStyleBackColor = false;
             // 
+            // ovalPictureBox1
+            // 
+            this.ovalPictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ovalPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("ovalPictureBox1.Image")));
+            this.ovalPictureBox1.Location = new System.Drawing.Point(15, 30);
+            this.ovalPictureBox1.Name = "ovalPictureBox1";
+            this.ovalPictureBox1.Size = new System.Drawing.Size(150, 150);
+            this.ovalPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ovalPictureBox1.TabIndex = 66;
+            this.ovalPictureBox1.TabStop = false;
+            // 
+            // tab2
+            // 
+            this.tab2.AutoSize = true;
+            this.tab2.Font = new System.Drawing.Font("Nasalization Rg", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tab2.ForeColor = System.Drawing.Color.White;
+            this.tab2.Location = new System.Drawing.Point(197, 10);
+            this.tab2.Name = "tab2";
+            this.tab2.Size = new System.Drawing.Size(103, 15);
+            this.tab2.TabIndex = 68;
+            this.tab2.Text = "Add Student";
+            this.tab2.Click += new System.EventHandler(this.tab2_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -561,7 +575,6 @@ namespace SmartDiscipline
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelPie.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -572,6 +585,7 @@ namespace SmartDiscipline
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panelGauge.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -612,5 +626,6 @@ namespace SmartDiscipline
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuMetroTextbox tbFullName;
         private System.Windows.Forms.Button btnRegister;
+        private Bunifu.Framework.UI.BunifuCustomLabel tab2;
     }
 }
