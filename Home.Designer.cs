@@ -301,6 +301,7 @@ namespace SmartDiscipline
             this.tbSearch.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(179)))), ((int)(((byte)(148)))));
             this.tbSearch.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(195)))), ((int)(((byte)(171)))));
             this.tbSearch.BorderThickness = 1;
+            this.tbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tbSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.tbSearch.ForeColor = System.Drawing.Color.Black;
             this.tbSearch.isPassword = false;
@@ -411,6 +412,7 @@ namespace SmartDiscipline
             this.button1.TabIndex = 15;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bunifuCustomLabel5
             // 
@@ -476,6 +478,7 @@ namespace SmartDiscipline
             this.dropAction.selectedIndex = -1;
             this.dropAction.Size = new System.Drawing.Size(434, 35);
             this.dropAction.TabIndex = 10;
+            this.dropAction.onItemSelected += new System.EventHandler(this.dropAction_onItemSelected);
             // 
             // dropLevels
             // 
@@ -497,6 +500,7 @@ namespace SmartDiscipline
             this.dropLevels.selectedIndex = -1;
             this.dropLevels.Size = new System.Drawing.Size(434, 35);
             this.dropLevels.TabIndex = 9;
+            this.dropLevels.onItemSelected += new System.EventHandler(this.dropLevels_onItemSelected);
             // 
             // bunifuDragControl1
             // 
@@ -511,6 +515,7 @@ namespace SmartDiscipline
             this.tbFullName.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(179)))), ((int)(((byte)(148)))));
             this.tbFullName.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(195)))), ((int)(((byte)(171)))));
             this.tbFullName.BorderThickness = 1;
+            this.tbFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tbFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.tbFullName.ForeColor = System.Drawing.Color.Black;
             this.tbFullName.isPassword = false;
