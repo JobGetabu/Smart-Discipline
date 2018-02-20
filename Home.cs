@@ -19,12 +19,18 @@ namespace SmartDiscipline
     public partial class Home : Form
     {
 
-        private int disLevel;
-        private int disAction;
+        private decimal disLevel;
+        private decimal disAction;
+
+        private double angValue = 0;
+        private ChartValues<decimal> mPieValue;
+        private ChartValues<decimal> pieValueM;
+        private ChartValues<decimal> pieValueE;
 
         public Home()
         {
             InitializeComponent();
+            SetUpAngular();
         }
 
         private Student currentStudent;
@@ -43,7 +49,52 @@ namespace SmartDiscipline
 
             //first student in db default
             currentStudent = studs.FirstOrDefault();
+            //chart updates auto
+
             UIset(currentStudent);
+
+
+        }
+
+        private void UpdateCharts(List<Disciplinary> lDis)
+        {
+            //different values of discipline
+            //minor major extreme
+            //check drop values
+
+            decimal minor = 0; decimal major = 0; decimal extreme = 0;
+
+            foreach (var dsss in lDis)
+            {
+                if (dsss.level > 79)
+                {
+                    // dropLevels.selectedIndex = 0;
+                    extreme += dsss.level;
+                }
+                if (dsss.level > 50 & dsss.level < 80)
+                {
+                    //dropLevels.selectedIndex = 2;
+                    major += dsss.level;
+                }
+                if (dsss.level >= 0 & dsss.level < 50)
+                {
+                    //dropLevels.selectedIndex = 1;
+                    minor += dsss.level;
+                }
+            }
+
+            // pieValueE.Clear() ;pieValueM.Clear(); mPieValue.Clear();
+
+            // pieValueE.Add(extreme);pieValueM.Add(major);mPieValue.Add(minor);
+
+            SetUpPieChart(minor, major, extreme);
+
+            decimal average = ((extreme + minor + major) / 100) * 100;
+
+            // angValue.Clear();
+            angValue = (double)average;
+            angularGauge1.Value = angValue;
+
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -81,7 +132,7 @@ namespace SmartDiscipline
             {
                 dropLevels.selectedIndex = 0;
             }
-            if (dsss.level >50 & dsss.level < 80)
+            if (dsss.level > 50 & dsss.level < 80)
             {
                 dropLevels.selectedIndex = 2;
             }
@@ -113,13 +164,14 @@ namespace SmartDiscipline
             });
 
             //latest case
-            mDis = studdis.OrderBy(x => x.Id).FirstOrDefault();
+            mDis = studdis.OrderBy(x => x.Id).LastOrDefault();
 
             if (mDis != null)
             {
                 tbLegalInfo.Text = mDis.Details;
-               // SetUpDrops(mDis)
+                SetUpDrops(mDis);
             }
+            UpdateCharts(studdis);
 
             //charts consume this data
 
@@ -159,6 +211,10 @@ namespace SmartDiscipline
                     UIset(currentStudent);
                     alert.Show($"{currentStudent.FullName} found ", alert.AlertType.success);
                 }
+                else
+                {
+                    alert.Show("No student found", alert.AlertType.info);
+                }
             }
         }
 
@@ -185,13 +241,16 @@ namespace SmartDiscipline
                 dd.Regno = currentStudent.Regno;
                 dd.Action = dropAction.selectedValue.ToString();
                 dd.Details = tbLegalInfo.Text;
-                dd.level = disAction;
+                dd.level = (disAction + disLevel);
 
                 try
                 {
                     context.Disciplinaries.Add(dd);
                     context.SaveChanges();
                     alert.Show("Saved Successfully", alert.AlertType.success);
+
+                    //set ui again
+                    UIset(currentStudent);
                 }
                 catch (Exception)
                 {
@@ -210,7 +269,7 @@ namespace SmartDiscipline
                 disLevel = r.Next(80, 100);
 
                 //populate the dropAction
-                String[] s = {"Expulsion" , "Detention" };
+                String[] s = { "Expulsion", "Detention" };
                 dropAction.Items = s;
             }
             //minior
@@ -258,53 +317,67 @@ namespace SmartDiscipline
             }
         }
 
-        private void tab2_Click(object sender, EventArgs e)
+        private async void tab2_Click(object sender, EventArgs e)
         {
             //prompt add student
+            FrmAddStud ff = new FrmAddStud();
+            if (ff.ShowDialog() == DialogResult.OK)
+            {
+                List<Student> studs = await Task.Factory.StartNew(() =>
+                {
+                    using (var context = new SmartdbEntities())
+                    {
+                        return context.Students.OrderBy(c => c.Regno)
+                        .ToList();
+                    }
+                });
+
+                //first student in db default
+                currentStudent = studs.LastOrDefault();
+                //chart updates auto
+
+                UIset(currentStudent);
+            }
         }
 
         //pie chart
-        private async void SetUpPieChart()
+        private async void SetUpPieChart(decimal i, decimal j, decimal k)
         {
-            pieChart1.InnerRadius = 100;
+            pieChart1.InnerRadius = 70;
             pieChart1.LegendLocation = LegendLocation.Right;
 
             pieChart1.Series = new SeriesCollection
             {
                 new PieSeries
                 {
-                    Title = "Chrome",
-                    Values = new ChartValues<double> {8},
+                    Title = "Minor Issues",
+                    Values = new ChartValues<decimal> {i },
                     PushOut = 15,
                     DataLabels = true
                 },
                 new PieSeries
                 {
-                    Title = "Mozilla",
-                    Values = new ChartValues<double> {6},
+                    Title = "Major Issues",
+                    Values = new ChartValues<decimal> {j },
                     DataLabels = true
                 },
                 new PieSeries
                 {
-                    Title = "Opera",
-                    Values = new ChartValues<double> {10},
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "Explorer",
-                    Values = new ChartValues<double> {4},
+                    Title = "Extreme Cases",
+                    Values = new ChartValues<decimal> {k },
                     DataLabels = true
                 }
             };
 
         }
 
-        private async void SetUpAngular()
+
+        private void SetUpAngular()
         {
-            angularGauge1.Value = 160;
-            angularGauge1.FromValue = 50;
-            angularGauge1.ToValue = 250;
+            angularGauge1.Value = angValue;
+            angularGauge1.FromValue = 0;
+            angularGauge1.ToValue = 100;
+
             angularGauge1.TicksForeground = Brushes.White;
             angularGauge1.Base.Foreground = Brushes.White;
             angularGauge1.Base.FontWeight = FontWeights.Bold;
@@ -313,15 +386,27 @@ namespace SmartDiscipline
 
             angularGauge1.Sections.Add(new AngularSection
             {
+                FromValue = 0,
+                ToValue = 49,
+                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(123, 141, 57))
+            });
+            angularGauge1.Sections.Add(new AngularSection
+            {
                 FromValue = 50,
-                ToValue = 200,
-                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(247, 166, 37))
+                ToValue = 79,
+                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(221, 69, 0))
+            });
+            angularGauge1.Sections.Add(new AngularSection
+            {
+                FromValue = 80,
+                ToValue = 100,
+                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 187, 0))
             });
             angularGauge1.Sections.Add(new AngularSection
             {
                 FromValue = 200,
                 ToValue = 250,
-                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(254, 57, 57))
+                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(201, 0, 0))
             });
         }
     }
